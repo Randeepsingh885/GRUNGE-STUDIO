@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRUNGE.STUDIO — Digital Brutalism Agency</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific extras */
+    .hero-img-block {
+      position: absolute;
+      right: 4vw; bottom: 4rem;
+      width: 260px;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      background: var(--white);
+      transform: rotate(2deg);
+      overflow: hidden;
+      display: none;
+    }
+    @media (min-width: 1000px) { .hero-img-block { display: block; } }
+
+    .hero-img-block img { width: 100%; display: block; filter: grayscale(0.5) contrast(1.1); }
+    .hero-img-caption {
+      padding: 0.75rem 1rem;
+      border-top: var(--border);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--newsprint);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border: var(--border-thick);
+      overflow: hidden;
+    }
+    .process-step {
+      padding: 2.5rem 2rem;
+      border-right: var(--border-thick);
+      position: relative;
+      transition: background 0.2s ease;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--crimson); color: var(--newsprint); }
+    .process-step:hover .step-num { color: var(--newsprint); opacity: 0.3; }
+    .process-step:hover p { color: var(--newsprint); opacity: 0.8; }
+    .step-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--crimson);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .process-step h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .process-step p { font-size: 14px; opacity: 0.65; transition: color 0.2s ease, opacity 0.2s ease; }
+
+    .brands-strip {
+      padding: 3rem 2.5rem;
+      border-bottom: var(--border-thick);
+    }
+    .brands-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.4;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .brands-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .brand-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.25;
+      transition: opacity 0.2s ease;
+      cursor: default;
+    }
+    .brand-logo:hover { opacity: 0.7; }
+  </style>
+</head>
+<body>
+
+<!-- ════ HEADER ════════════════════════════════════════════ -->
+<header class="site-header">
+  <a href="index.html" class="logo">GRUNGE<span>.</span>STUDIO</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-stamp" style="padding:10px 22px; font-size:13px;">Get Started →</a>
+  </nav>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ════ MOBILE NAV ════════════════════════════════════════ -->
+<div class="mobile-nav">
+  <button class="mobile-nav-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ════ TICKER ════════════════════════════════════════════ -->
+<div class="ticker" style="margin-top:72px;">
+  <div class="ticker-track">
+    <span class="ticker-item">We Build What Others Can't</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Digital Brutalism Agency</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Raw. Bold. Unapologetic.</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Est. 2026 — Haryana, IN</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Conversion-First Design</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Results Over Pretty</span>
+    <span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- ════ HERO ═══════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-watermark">₹</div>
+
+  <span class="hero-label glitch-reveal">↯ Haryana's Loudest Agency</span>
+
+  <h1 class="glitch-reveal">
+    <span class="line-1">We Don't</span>
+    <span class="line-2">Make Pretty</span>
+    <span class="line-3">We Make Money</span>
+  </h1>
+
+  <p class="hero-sub glitch-reveal">
+    Conversion-obsessed design systems that hit like a sledgehammer.
+    No fluff. No lorem ipsum. Just brutal results.
+  </p>
+
+  <div class="hero-ctas glitch-reveal">
+    <a href="pricing.html" class="btn-stamp">See Pricing →</a>
+    <a href="about.html" class="btn-stamp btn-stamp--outline">Our Story</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item glitch-reveal">
+      <span class="stat-num" data-count="340" data-suffix="+">0</span>
+      <span class="stat-label">Projects Shipped</span>
+    </div>
+    <div class="stat-item glitch-reveal">
+      <span class="stat-num" data-count="4.9" data-suffix="★">0</span>
+      <span class="stat-label">Avg. Client Rating</span>
+    </div>
+    <div class="stat-item glitch-reveal">
+      <span class="stat-num" data-count="12" data-suffix="x">0</span>
+      <span class="stat-label">Avg. ROI Multiplier</span>
+    </div>
+    <div class="stat-item glitch-reveal">
+      <span class="stat-num" data-count="98" data-suffix="%">0</span>
+      <span class="stat-label">Client Retention</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BRANDS STRIP ═══════════════════════════════════════ -->
+<div class="brands-strip">
+  <p class="brands-label">Trusted by founders, startups & enterprises</p>
+  <div class="brands-logos">
+    <span class="brand-logo">Nexara</span>
+    <span class="brand-logo">Zelta.io</span>
+    <span class="brand-logo">Vaultify</span>
+    <span class="brand-logo">Prism Labs</span>
+    <span class="brand-logo">Blokcraft</span>
+    <span class="brand-logo">Orika</span>
+    <span class="brand-logo">Huxley</span>
+  </div>
+</div>
+
+<!-- ════ COMPARISON ═════════════════════════════════════════ -->
+<section class="comparison">
+  <div class="section-header glitch-reveal">
+    <h2 style="color:var(--newsprint);">Before<br>vs After</h2>
+    <span class="section-label">// The Grunge Difference</span>
+  </div>
+
+  <div class="compare-grid glitch-reveal">
+    <div class="compare-col compare-col--before">
+      <h3>Before Us</h3>
+      <ul class="compare-list">
+        <li data-icon="💀">Generic template nonsense</li>
+        <li data-icon="💀">Bounce rate above 80%</li>
+        <li data-icon="💀">Zero brand identity</li>
+        <li data-icon="💀">Conversion rate under 1%</li>
+        <li data-icon="💀">Copy-paste component hell</li>
+        <li data-icon="💀">Ignored by your audience</li>
+      </ul>
+    </div>
+    <div class="compare-col compare-col--after">
+      <h3>After Us</h3>
+      <ul class="compare-list">
+        <li data-icon="⚡">Custom systems built to convert</li>
+        <li data-icon="⚡">Bounce rate slashed to 32%</li>
+        <li data-icon="⚡">Unmistakable visual identity</li>
+        <li data-icon="⚡">Conversion rates 8–15%+</li>
+        <li data-icon="⚡">Every pixel earns its place</li>
+        <li data-icon="⚡">Impossible to ignore</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FEATURES ════════════════════════════════════════════ -->
+<section>
+  <div class="section-header glitch-reveal">
+    <h2>What We<br>Actually Do</h2>
+    <span class="section-label">// Services</span>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">01</span>
+      <span class="card-icon">⚒</span>
+      <h3>Brand Systems</h3>
+      <p>From logo marks to full design tokens — we build visual identity systems that are ruthlessly consistent and instantly recognizable.</p>
+    </div>
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">02</span>
+      <span class="card-icon">⚡</span>
+      <h3>Landing Pages</h3>
+      <p>Conversion-engineered pages that don't just look good — they pull people down the funnel like gravity. No exceptions.</p>
+    </div>
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">03</span>
+      <span class="card-icon">🔩</span>
+      <h3>UI/UX Systems</h3>
+      <p>Full product design from wireframes to pixel-perfect handoff. We design interfaces that users actually understand and love.</p>
+    </div>
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">04</span>
+      <span class="card-icon">📡</span>
+      <h3>Web Development</h3>
+      <p>We build in React, Next.js, or plain HTML/CSS/JS — whatever gets your product live fastest without cutting corners.</p>
+    </div>
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">05</span>
+      <span class="card-icon">📰</span>
+      <h3>Print & Editorial</h3>
+      <p>Decks, brochures, posters, zines. Physical work that carries your brand into the real world with the same brutal authority.</p>
+    </div>
+    <div class="feature-card glitch-reveal">
+      <span class="card-tag">06</span>
+      <span class="card-icon">📈</span>
+      <h3>Growth Audits</h3>
+      <p>We tear apart your funnel, find every leak, and hand you a prioritized fix list. Brutal honesty, zero sugar coating.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROCESS ═════════════════════════════════════════════ -->
+<section style="padding-top:0; border-bottom: var(--border-thick);">
+  <div class="section-header glitch-reveal">
+    <h2>How It<br>Works</h2>
+    <span class="section-label">// Process</span>
+  </div>
+
+  <div class="process-steps glitch-reveal">
+    <div class="process-step">
+      <span class="step-num">01</span>
+      <h3>Brief & Audit</h3>
+      <p>Deep-dive into your brand, audience, and goals. No assumptions.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">02</span>
+      <h3>Strategy Sprint</h3>
+      <p>3-day sprint to nail positioning, tone, and visual direction.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">03</span>
+      <h3>Build & Iterate</h3>
+      <p>Rapid delivery with weekly checkpoints. You're never in the dark.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">04</span>
+      <h3>Launch & Optimize</h3>
+      <p>Go live, gather data, iterate. We stay on until numbers move.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="section-header glitch-reveal">
+    <h2 style="color:var(--newsprint);">What Clients<br>Actually Say</h2>
+    <span class="section-label">// Reviews</span>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card glitch-reveal">
+      <p class="testi-text">They redesigned our landing page in 2 weeks and our signups went from 40/month to 380/month. I literally cried. Worth every rupee.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <span class="testi-name">Rahul Khanna</span>
+          <span class="testi-role">Founder, Nexara SaaS</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card glitch-reveal">
+      <p class="testi-text">Every other agency gave us the same purple gradient garbage. Grunge.Studio gave us an identity. Our investors noticed immediately.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PS</div>
+        <div>
+          <span class="testi-name">Priya Sharma</span>
+          <span class="testi-role">CEO, Zelta.io</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card glitch-reveal">
+      <p class="testi-text">The brutalist approach was scary at first. Then our sales doubled in 60 days. Now I'm the one telling everyone to stop being afraid of bold design.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AM</div>
+        <div>
+          <span class="testi-name">Arjun Mehta</span>
+          <span class="testi-role">COO, Vaultify</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MARQUEE DARK ════════════════════════════════════════ -->
+<div class="marquee-dark">
+  <div class="ticker-track">
+    <span class="ticker-item">Design Is A Weapon</span>
+    <span class="ticker-dot" style="color:var(--crimson);">·</span>
+    <span class="ticker-item">Ugly Sells More Than Pretty</span>
+    <span class="ticker-dot" style="color:var(--crimson);">·</span>
+    <span class="ticker-item">Stop Playing Safe</span>
+    <span class="ticker-dot" style="color:var(--crimson);">·</span>
+    <span class="ticker-item">Conversion Is King</span>
+    <span class="ticker-dot" style="color:var(--crimson);">·</span>
+    <span class="ticker-item">Your Brand Is Boring And We Can Fix That</span>
+    <span class="ticker-dot" style="color:var(--crimson);">·</span>
+  </div>
+</div>
+
+<!-- ════ CTA BAND ════════════════════════════════════════════ -->
+<section class="cta-band">
+  <h2 class="glitch-reveal" data-glitch>Ready To Stop<br>Playing Small?</h2>
+  <p class="glitch-reveal">Join 340+ brands who chose brutal over beautiful — and got both.</p>
+  <div class="glitch-reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn-stamp btn-stamp--white">Start A Project →</a>
+    <a href="pricing.html" class="btn-stamp" style="background:transparent;color:var(--newsprint);border-color:var(--newsprint);">View Pricing</a>
+  </div>
+</section>
+
+<!-- ════ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">GRUNGE<span>.</span>STUDIO</span>
+      <p>Digital design for brands that refuse to be ignored. Based in New Delhi. Working worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Brand Systems</a></li>
+        <li><a href="#">Landing Pages</a></li>
+        <li><a href="#">UI/UX Design</a></li>
+        <li><a href="#">Web Dev</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="contact.html">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Grunge.Studio — All Rights Reserved</p>
+    <p>Made with Brutalism & Caffeine · New Delhi, IN</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

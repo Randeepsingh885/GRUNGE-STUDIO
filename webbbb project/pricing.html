@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — GRUNGE.STUDIO</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .pricing-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+    }
+    .pricing-intro h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+    .pricing-intro p { opacity: 0.65; font-size: 1.05rem; }
+
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .toggle-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 52px; height: 26px;
+      background: var(--charcoal);
+      border: var(--border);
+      cursor: pointer;
+      transition: background steps(2) 0.1s;
+    }
+    .toggle-switch.active { background: var(--crimson); }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      background: var(--newsprint);
+      transition: transform steps(2) 0.1s;
+    }
+    .toggle-switch.active::after { transform: translateX(26px); }
+    .save-badge {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--green);
+      color: var(--charcoal);
+      padding: 3px 8px;
+      border: 1px solid var(--charcoal);
+      font-weight: 700;
+    }
+
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .addon-card {
+      border: var(--border);
+      padding: 1.5rem;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+    .addon-card:hover {
+      box-shadow: var(--shadow);
+      transform: translate(-2px, -2px);
+    }
+    .addon-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .addon-info h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .addon-info p { font-size: 13px; opacity: 0.6; margin-bottom: 0.5rem; }
+    .addon-price {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      color: var(--crimson);
+      font-weight: 700;
+    }
+
+    .guarantee-box {
+      background: var(--carbon);
+      border: 4px solid var(--green);
+      padding: 3rem;
+      box-shadow: 6px 6px 0 var(--green);
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .guarantee-badge {
+      position: absolute;
+      top: -20px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: var(--charcoal);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      padding: 6px 16px;
+      border: var(--border);
+      white-space: nowrap;
+    }
+    .guarantee-box h3 {
+      font-size: 2rem;
+      color: var(--newsprint);
+      margin-bottom: 1rem;
+    }
+    .guarantee-box p {
+      color: var(--newsprint);
+      opacity: 0.7;
+      font-size: 15px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: var(--border-thick);
+      overflow: hidden;
+    }
+    .comparison-table th {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      background: var(--carbon);
+      color: var(--newsprint);
+      border-bottom: var(--border-thick);
+      border-right: var(--border);
+    }
+    .comparison-table th:last-child { border-right: none; }
+    .comparison-table th.featured { background: var(--crimson); }
+    .comparison-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: var(--border);
+      border-right: var(--border);
+      font-size: 14px;
+    }
+    .comparison-table td:last-child { border-right: none; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td.featured { background: rgba(220,20,60,0.05); }
+    .comparison-table td:first-child {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+    }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--crimson); opacity: 0.5; }
+
+    @media (max-width: 700px) {
+      .comparison-table { font-size: 12px; }
+      .comparison-table th, .comparison-table td { padding: 0.75rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">GRUNGE<span>.</span>STUDIO</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-stamp" style="padding:10px 22px; font-size:13px;">Get Started →</a>
+  </nav>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav">
+  <button class="mobile-nav-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero" data-bg-text="₹" style="margin-top:72px;">
+  <div class="page-hero-content">
+    <span class="hero-label" style="margin-bottom:1.5rem; display:inline-block;">// Transparent Pricing</span>
+    <h1>No Hidden Fees.<br>No <span>Bullshit</span>.</h1>
+    <p>Three plans. Clear deliverables. Fixed timelines. If it costs more, we tell you before we start — not after.</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>→</span>
+  <span class="current">Pricing</span>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">All Plans Include Source Files</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">No Recurring Fees Unless You Want Them</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">30-Day Revision Guarantee</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Dedicated Point of Contact</span>
+    <span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- PRICING SECTION -->
+<section>
+  <div class="pricing-intro glitch-reveal">
+    <h2>Pick Your<br>Weapon</h2>
+    <p>Every plan is a fixed-scope engagement. You know exactly what you're getting, when you're getting it, and what it costs. Period.</p>
+  </div>
+
+  <div class="pricing-toggle glitch-reveal">
+    <span class="toggle-label">Monthly</span>
+    <div class="toggle-switch" id="billingToggle" role="button" tabindex="0" aria-label="Toggle annual billing"></div>
+    <span class="toggle-label">Annual</span>
+    <span class="save-badge">Save 20%</span>
+  </div>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card glitch-reveal">
+      <div class="pricing-head">
+        <span class="pricing-tier">Starter</span>
+        <h3>Launch</h3>
+        <div class="price">
+          <sup>₹</sup><span class="price-amount" data-monthly="49,999" data-annual="39,999">49,999</span>
+        </div>
+        <span class="price-period">One-time project fee</span>
+      </div>
+      <div class="pricing-body">
+        <ul class="pricing-features">
+          <li>Brand Identity (logo + mark)</li>
+          <li>Color system & typography</li>
+          <li>1× Landing page design</li>
+          <li>Mobile-first responsive</li>
+          <li>Basic HTML/CSS delivery</li>
+          <li>2 rounds of revisions</li>
+          <li>7-day turnaround</li>
+        </ul>
+        <a href="contact.html" class="btn-stamp btn-stamp--outline" style="width:100%;text-align:center;display:block;">Get Started →</a>
+      </div>
+    </div>
+
+    <div class="pricing-card pricing-card--featured glitch-reveal">
+      <div class="pricing-head">
+        <span class="pricing-tier">Most Popular</span>
+        <h3>Growth</h3>
+        <div class="price">
+          <sup>₹</sup><span class="price-amount" data-monthly="1,19,999" data-annual="95,999">1,19,999</span>
+        </div>
+        <span class="price-period">One-time project fee</span>
+      </div>
+      <div class="pricing-body">
+        <ul class="pricing-features">
+          <li>Everything in Launch</li>
+          <li>Full UI/UX system (Figma)</li>
+          <li>Up to 8 page designs</li>
+          <li>React/Next.js development</li>
+          <li>Conversion copywriting</li>
+          <li>Analytics setup (GA4 + Hotjar)</li>
+          <li>4 rounds of revisions</li>
+          <li>14-day turnaround</li>
+        </ul>
+        <a href="contact.html" class="btn-stamp btn-stamp--white" style="width:100%;text-align:center;display:block;">Get Started →</a>
+      </div>
+    </div>
+
+    <div class="pricing-card glitch-reveal">
+      <div class="pricing-head">
+        <span class="pricing-tier">Enterprise</span>
+        <h3>Dominate</h3>
+        <div class="price">
+          <sup>₹</sup><span class="price-amount" data-monthly="3,49,999" data-annual="2,79,999">3,49,999</span>
+        </div>
+        <span class="price-period">One-time project fee</span>
+      </div>
+      <div class="pricing-body">
+        <ul class="pricing-features">
+          <li>Everything in Growth</li>
+          <li>Full brand system & guidelines</li>
+          <li>Unlimited page designs</li>
+          <li>Full-stack web app (if needed)</li>
+          <li>Print collateral (decks, brochures)</li>
+          <li>Growth audit & strategy doc</li>
+          <li>30-day post-launch support</li>
+          <li>Dedicated project manager</li>
+          <li>Unlimited revisions</li>
+        </ul>
+        <a href="contact.html" class="btn-stamp" style="width:100%;text-align:center;display:block;">Get Started →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section style="background:var(--carbon); overflow-x:auto;">
+  <div class="section-header glitch-reveal">
+    <h2 style="color:var(--newsprint);">Plan<br>Comparison</h2>
+    <span class="section-label">// Feature Matrix</span>
+  </div>
+  <div style="overflow-x:auto;" class="glitch-reveal">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Launch</th>
+          <th class="featured">Growth</th>
+          <th>Dominate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Brand Identity</td>
+          <td><span class="check">✓</span></td>
+          <td class="featured"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Landing Page Design</td>
+          <td>1 page</td>
+          <td class="featured">Up to 8 pages</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <td>Figma Source Files</td>
+          <td><span class="check">✓</span></td>
+          <td class="featured"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Development</td>
+          <td>HTML/CSS</td>
+          <td class="featured">React/Next.js</td>
+          <td>Full-stack</td>
+        </tr>
+        <tr>
+          <td>Copywriting</td>
+          <td><span class="cross">✕</span></td>
+          <td class="featured"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Analytics Setup</td>
+          <td><span class="cross">✕</span></td>
+          <td class="featured"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Print Collateral</td>
+          <td><span class="cross">✕</span></td>
+          <td class="featured"><span class="cross">✕</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Post-Launch Support</td>
+          <td><span class="cross">✕</span></td>
+          <td class="featured">7 days</td>
+          <td>30 days</td>
+        </tr>
+        <tr>
+          <td>Revisions</td>
+          <td>2 rounds</td>
+          <td class="featured">4 rounds</td>
+          <td>Unlimited</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section>
+  <div class="section-header glitch-reveal">
+    <h2>Add-Ons &<br>Extras</h2>
+    <span class="section-label">// Bolt-Ons</span>
+  </div>
+  <div class="addon-grid">
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">⚡</span>
+      <div class="addon-info">
+        <h4>Rush Delivery</h4>
+        <p>Need it in half the time? We'll make it happen.</p>
+        <span class="addon-price">+₹25,000</span>
+      </div>
+    </div>
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">📱</span>
+      <div class="addon-info">
+        <h4>App UI Design</h4>
+        <p>iOS/Android app screens. Same brutal quality.</p>
+        <span class="addon-price">From ₹60,000</span>
+      </div>
+    </div>
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">📰</span>
+      <div class="addon-info">
+        <h4>Pitch Deck</h4>
+        <p>Investor-ready deck design. 15–25 slides.</p>
+        <span class="addon-price">From ₹35,000</span>
+      </div>
+    </div>
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">📊</span>
+      <div class="addon-info">
+        <h4>A/B Test Suite</h4>
+        <p>3 landing page variants with analytics.</p>
+        <span class="addon-price">+₹40,000</span>
+      </div>
+    </div>
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">🔁</span>
+      <div class="addon-info">
+        <h4>Monthly Retainer</h4>
+        <p>Ongoing design support. 20hrs/month.</p>
+        <span class="addon-price">₹50,000/mo</span>
+      </div>
+    </div>
+    <div class="addon-card glitch-reveal">
+      <span class="addon-icon">📦</span>
+      <div class="addon-info">
+        <h4>Brand Audit</h4>
+        <p>Full teardown of your current brand with a fix list.</p>
+        <span class="addon-price">₹18,000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="background:var(--carbon);">
+  <div class="guarantee-box glitch-reveal">
+    <span class="guarantee-badge">✓ Our Guarantee</span>
+    <h3 style="color:var(--newsprint);">If You're Not Satisfied After The First Draft, We Refund You. Full Stop.</h3>
+    <p>We've never had to use it in 6 years. Because we do our homework before we start. But it's there if you need it.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-header glitch-reveal">
+    <h2>Common<br>Questions</h2>
+    <span class="section-label">// FAQ</span>
+  </div>
+
+  <div class="faq-list glitch-reveal">
+    <div class="faq-item">
+      <button class="faq-question">
+        Do the prices include GST?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">All prices shown are exclusive of 18% GST. Your final invoice will include GST as applicable. We provide proper GST invoices for ITC claims.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        How does payment work?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">We take 50% upfront to kick off the project and 50% on delivery. For larger projects (Dominate plan), we can discuss a milestone-based payment structure. No surprises.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        What if I need changes after delivery?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Each plan includes a specified number of revision rounds during the project. After delivery, minor tweaks within 7 days are free. For larger changes, we'll scope them as a separate project or retainer.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I upgrade mid-project?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Yes. If your scope grows, we'll quote the difference and you can pay to upgrade. We'll never do work outside scope without telling you the cost first.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Do you work with international clients?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Absolutely. We work with clients globally. International payments via wire transfer or Stripe. Prices can be quoted in USD or GBP on request. Time zones haven't been an issue — we're flexible.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        How quickly can you start?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Current average wait time is 5–7 business days. For rush projects, we have limited slots available at an additional fee. Reach out and we'll give you an honest timeline.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="glitch-reveal">Still On The<br>Fence?</h2>
+  <p class="glitch-reveal">Book a free 30-minute call. No pitch. We'll look at your current brand and tell you honestly if we can help — and how.</p>
+  <div class="glitch-reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn-stamp btn-stamp--white">Book Free Call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">GRUNGE<span>.</span>STUDIO</span>
+      <p>Digital design for brands that refuse to be ignored. Based in New Delhi. Working worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Brand Systems</a></li>
+        <li><a href="#">Landing Pages</a></li>
+        <li><a href="#">UI/UX Design</a></li>
+        <li><a href="#">Web Dev</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="contact.html">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Grunge.Studio — All Rights Reserved</p>
+    <p>Made with Brutalism & Caffeine · New Delhi, IN</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Billing toggle
+  const toggle = document.getElementById('billingToggle');
+  const amounts = document.querySelectorAll('.price-amount');
+  let isAnnual = false;
+
+  toggle.addEventListener('click', () => {
+    isAnnual = !isAnnual;
+    toggle.classList.toggle('active', isAnnual);
+    amounts.forEach(el => {
+      el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+  });
+</script>
+</body>
+</html>

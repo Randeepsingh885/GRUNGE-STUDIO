@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — GRUNGE.STUDIO</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .value-card {
+      padding: 2rem;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--crimson);
+    }
+    .value-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .value-card p  { font-size: 14px; opacity: 0.65; }
+    .value-num {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--crimson);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .manifesto {
+      background: var(--carbon);
+      padding: 6rem 2.5rem;
+      border-bottom: var(--border-thick);
+    }
+    .manifesto-text {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .manifesto-text h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--newsprint);
+      margin-bottom: 2rem;
+    }
+    .manifesto-text h2 em {
+      font-style: normal;
+      color: var(--crimson);
+    }
+    .manifesto-text p {
+      color: var(--newsprint);
+      opacity: 0.6;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .manifesto-text p:last-child { margin-bottom: 0; }
+
+    .awards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .award-badge {
+      border: var(--border);
+      padding: 1rem 1.5rem;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .award-badge .award-year {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--crimson);
+    }
+    .award-badge .award-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .award-badge .award-org {
+      font-size: 13px;
+      opacity: 0.5;
+    }
+
+    .about-intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-intro-text h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+    .about-intro-text p  { opacity: 0.7; margin-bottom: 1.5rem; line-height: 1.8; }
+
+    .big-number-block {
+      border: var(--border-thick);
+      padding: 3rem 2rem;
+      background: var(--crimson);
+      text-align: center;
+      transform: rotate(-1deg);
+      box-shadow: var(--shadow);
+    }
+    .big-number-block .big-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--newsprint);
+      line-height: 1;
+      display: block;
+    }
+    .big-number-block .big-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--newsprint);
+      opacity: 0.8;
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    @media (max-width: 800px) {
+      .about-intro-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="index.html" class="logo">GRUNGE<span>.</span>STUDIO</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-stamp" style="padding:10px 22px; font-size:13px;">Get Started →</a>
+  </nav>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav">
+  <button class="mobile-nav-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero" data-bg-text="ABOUT" style="margin-top:72px;">
+  <div class="page-hero-content">
+    <span class="hero-label" style="margin-bottom:1.5rem; display:inline-block;">// Who We Are</span>
+    <h1>We Are Not <span>A Normal</span><br>Agency</h1>
+    <p>Born from frustration with mediocre design. Built to deliver results that actually matter. Based in New Delhi, operating everywhere.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>→</span>
+  <span class="current">About</span>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Est. 2019 · New Delhi</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">11 Full-Time Creatives</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">340+ Projects Shipped</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Zero Fluff Policy</span>
+    <span class="ticker-dot">·</span>
+    <span class="ticker-item">Results Are The Only KPI</span>
+    <span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT INTRO -->
+<section>
+  <div class="about-intro-grid">
+    <div class="about-intro-text glitch-reveal">
+      <h2>We Started This Because<br>We Were <em style="font-style:normal;color:var(--crimson);">Angry</em></h2>
+      <p>In 2019, our founders left their cushy agency jobs after watching client after client get handed the same recycled templates with different logos slapped on. The work was insulting. The results were worse.</p>
+      <p>So we started Grunge.Studio with one rule: every project gets designed from scratch, for that specific audience, with conversion as the north star. Not "vibes". Not "aesthetic". Numbers.</p>
+      <p>Six years later, we have 340+ shipped projects, a 98% client retention rate, and a very strong opinion about purple gradients.</p>
+      <a href="contact.html" class="btn-stamp" style="margin-top:1rem;">Work With Us →</a>
+    </div>
+    <div class="glitch-reveal">
+      <div class="big-number-block">
+        <span class="big-num">6</span>
+        <span class="big-label">Years of Brutalism</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-text">
+    <h2 class="glitch-reveal">Design is a <em>weapon</em>.<br>Most people use it wrong.</h2>
+    <p class="glitch-reveal">Pretty doesn't pay bills. Engagement doesn't buy groceries. What matters is whether a human being, faced with your product, takes the action you need them to take. Everything else is decoration.</p>
+    <p class="glitch-reveal">We build with intention. Every font choice, every color, every pixel of whitespace — or deliberate lack of it — is in service of one thing: making your audience feel what they need to feel and do what you need them to do.</p>
+    <p class="glitch-reveal">That's not art. That's engineering. We just make it look brutal while we do it.</p>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section>
+  <div class="section-header glitch-reveal">
+    <h2>What We<br>Believe</h2>
+    <span class="section-label">// Values</span>
+  </div>
+  <div class="values-grid">
+    <div class="value-card glitch-reveal">
+      <span class="value-num">01</span>
+      <h3>Results Over Pretty</h3>
+      <p>A beautiful website with a 90% bounce rate is a failure. We optimize for outcomes, not awards — though we win those too.</p>
+    </div>
+    <div class="value-card glitch-reveal">
+      <span class="value-num">02</span>
+      <h3>Brutal Honesty</h3>
+      <p>We'll tell you your current design is broken. We'll tell you your copy is weak. We'd rather lose a deal than lie to a client.</p>
+    </div>
+    <div class="value-card glitch-reveal">
+      <span class="value-num">03</span>
+      <h3>No Templates</h3>
+      <p>Every project starts on a blank canvas. We research your audience, your market, and your competitors before we touch a tool.</p>
+    </div>
+    <div class="value-card glitch-reveal">
+      <span class="value-num">04</span>
+      <h3>Speed & Quality</h3>
+      <p>We move fast. Not recklessly — methodically. Two-week sprints mean you see real work, not mood boards, within days.</p>
+    </div>
+    <div class="value-card glitch-reveal">
+      <span class="value-num">05</span>
+      <h3>Own The Outcome</h3>
+      <p>We don't ghost after delivery. We track numbers, we iterate, we stay involved until the metrics are where they need to be.</p>
+    </div>
+    <div class="value-card glitch-reveal">
+      <span class="value-num">06</span>
+      <h3>Craft Matters</h3>
+      <p>Even within brutalism, craft is everything. The grain overlay is at exactly 18%. The shadow offset is precisely 6px. Details win.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section style="background:var(--carbon); color:var(--newsprint);">
+  <div class="section-header glitch-reveal">
+    <h2 style="color:var(--newsprint);">Our<br>Journey</h2>
+    <span class="section-label">// Timeline</span>
+  </div>
+
+  <div class="timeline" style="border-color:rgba(240,234,214,0.2);">
+    <div class="timeline-item glitch-reveal">
+      <span class="timeline-year">2019</span>
+      <h3 style="color:var(--newsprint);">Founded</h3>
+      <p style="color:var(--newsprint);">Two designers, one MacBook, and a rented basement in Lajpat Nagar. First client: a D2C streetwear brand. First result: 320% conversion increase.</p>
+    </div>
+    <div class="timeline-item glitch-reveal">
+      <span class="timeline-year">2020</span>
+      <h3 style="color:var(--newsprint);">Survived the Chaos</h3>
+      <p style="color:var(--newsprint);">The pandemic hit. We pivoted to help 40+ small businesses get digital. Revenue tripled. Hired 3 more people. Moved to a proper office.</p>
+    </div>
+    <div class="timeline-item glitch-reveal">
+      <span class="timeline-year">2021</span>
+      <h3 style="color:var(--newsprint);">The Grunge Manifesto</h3>
+      <p style="color:var(--newsprint);">Published our design philosophy publicly. It went viral on Twitter. 2,000+ inbound inquiries in 6 weeks. Had to build a waitlist.</p>
+    </div>
+    <div class="timeline-item glitch-reveal">
+      <span class="timeline-year">2022</span>
+      <h3 style="color:var(--newsprint);">International Clients</h3>
+      <p style="color:var(--newsprint);">First US and EU clients. First six-figure project. Moved to a bigger office. Team grew to 8 full-time creatives.</p>
+    </div>
+    <div class="timeline-item glitch-reveal">
+      <span class="timeline-year">2023–25</span>
+      <h3 style="color:var(--newsprint);">Full Throttle</h3>
+      <p style="color:var(--newsprint);">340+ total projects. 11-person team. Launched our design system product. Featured in Design Week India and Creative Review.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section>
+  <div class="section-header glitch-reveal">
+    <h2>The People<br>Behind It</h2>
+    <span class="section-label">// Team</span>
+  </div>
+  <div class="team-grid">
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">🔥</div>
+      <div class="team-info">
+        <h3>Vikram Anand</h3>
+        <span class="team-role">Founder & Creative Director</span>
+        <p>10 years in brand design. Ex-Ogilvy. Makes the scary calls others won't.</p>
+      </div>
+    </div>
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">⚡</div>
+      <div class="team-info">
+        <h3>Tara Nair</h3>
+        <span class="team-role">Co-Founder & Strategy Lead</span>
+        <p>Former growth consultant. Obsessed with conversion data and ugly graphs.</p>
+      </div>
+    </div>
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">🔩</div>
+      <div class="team-info">
+        <h3>Rohan Das</h3>
+        <span class="team-role">Head of Development</span>
+        <p>Turns pixel-perfect mocks into pixel-perfect code. Allergic to technical debt.</p>
+      </div>
+    </div>
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">📐</div>
+      <div class="team-info">
+        <h3>Meera Joshi</h3>
+        <span class="team-role">Senior UI/UX Designer</span>
+        <p>IIT-trained industrial designer. Brings rigorous systems thinking to every interface.</p>
+      </div>
+    </div>
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">🖊</div>
+      <div class="team-info">
+        <h3>Kabir Sen</h3>
+        <span class="team-role">Brand Copywriter</span>
+        <p>Words that cut. Former journalist. If your copy is boring, he'll say so to your face.</p>
+      </div>
+    </div>
+    <div class="team-card glitch-reveal">
+      <div class="team-photo">📊</div>
+      <div class="team-info">
+        <h3>Ananya Roy</h3>
+        <span class="team-role">Growth Analyst</span>
+        <p>Tracks everything. A/B tests everything. Argues with everyone's assumptions using data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section style="background: var(--carbon);">
+  <div class="section-header glitch-reveal">
+    <h2 style="color:var(--newsprint);">Recognition<br>& Awards</h2>
+    <span class="section-label">// Accolades</span>
+  </div>
+  <div class="awards-row">
+    <div class="award-badge glitch-reveal">
+      <span class="award-year">2024</span>
+      <span class="award-name">Agency of the Year</span>
+      <span class="award-org">Design Week India</span>
+    </div>
+    <div class="award-badge glitch-reveal">
+      <span class="award-year">2023</span>
+      <span class="award-name">Best Brand Identity</span>
+      <span class="award-org">Kyoorius Awards</span>
+    </div>
+    <div class="award-badge glitch-reveal">
+      <span class="award-year">2023</span>
+      <span class="award-name">Top 10 UX Studios</span>
+      <span class="award-org">Clutch.co Global</span>
+    </div>
+    <div class="award-badge glitch-reveal">
+      <span class="award-year">2022</span>
+      <span class="award-name">Rising Studio Award</span>
+      <span class="award-org">Awwwards</span>
+    </div>
+    <div class="award-badge glitch-reveal">
+      <span class="award-year">2021</span>
+      <span class="award-name">Featured Studio</span>
+      <span class="award-org">Creative Review</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="glitch-reveal">Like What<br>You See?</h2>
+  <p class="glitch-reveal">Let's make something loud together. Reach out and we'll respond within 24 hours — no automated replies.</p>
+  <div class="glitch-reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn-stamp btn-stamp--white">Start A Project →</a>
+    <a href="pricing.html" class="btn-stamp" style="background:transparent;color:var(--newsprint);border-color:var(--newsprint);">See Pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">GRUNGE<span>.</span>STUDIO</span>
+      <p>Digital design for brands that refuse to be ignored. Based in New Delhi. Working worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Brand Systems</a></li>
+        <li><a href="#">Landing Pages</a></li>
+        <li><a href="#">UI/UX Design</a></li>
+        <li><a href="#">Web Dev</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="contact.html">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Grunge.Studio — All Rights Reserved</p>
+    <p>Made with Brutalism & Caffeine · New Delhi, IN</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
